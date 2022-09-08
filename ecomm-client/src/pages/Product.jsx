@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client'
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { getProductById } from '../gqloperations/queries'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -10,6 +10,7 @@ import {useCart} from 'react-use-cart'
 
 const Product = () => {
   const {addItem} = useCart()
+  const navigate = useNavigate()
   const {id} = useParams()
   const {loading,error,data} = useQuery(getProductById,{
     variables:
@@ -17,7 +18,7 @@ const Product = () => {
 
   if(loading) return <h1>Loading....</h1>
   
-  if(error) console.log(error);
+  if(error) navigate('/')
    
     const {description,name,price } = data.product.data.attributes
     const img_data = data.product.data.attributes.image.data

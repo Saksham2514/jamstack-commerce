@@ -16,6 +16,7 @@ const Navbar = () => {
   <nav>
     <div className="nav-wrapper blue darken-2 ">
       <Link to="/" className="brand-logo">Ecommerce</Link>
+      
       <ul id="nav-mobile" className="right">
         
       <li>
@@ -42,6 +43,7 @@ const Navbar = () => {
           </>
           }
       </ul>
+      
     </div>
   </nav>
     </div>

@@ -1,8 +1,9 @@
 import { gql } from '@apollo/client'
 
 export const getAllProducts = gql`
-query getAllProducts {
-  products {
+
+  query getAllProducts($pagination: PaginationArg) {
+  products(pagination: $pagination) {
     data {
       id
       attributes {
@@ -18,10 +19,23 @@ query getAllProducts {
         }
       }
     }
+    meta {
+      pagination {
+        pageCount
+      }
+    }
   }
 }
 
 `
+/**
+{
+  "pagination": {
+    "page": 1,
+    "pageSize": 8
+  }
+}
+ */
 export const getProductById = gql`
 
 query getProductById($productId: ID) {
@@ -89,5 +103,28 @@ query Category($categoryId: ID) {
 /**
 {
   "categoryId": "1"
+}
+ */
+
+export const SEARCH = gql`
+
+query Products($filters: ProductFiltersInput) {
+  products(filters: $filters) {
+    data {
+      id
+      attributes {
+        name
+      }
+    }
+  }
+}
+`
+/**
+ {
+  "filters": {
+    "name": {
+      "startsWith": "M"
+    }
+  }
 }
  */

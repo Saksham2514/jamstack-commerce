@@ -3,6 +3,7 @@ import Product from './pages/Product'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Cart from './pages/Cart'
+import { ProductByCat } from './pages/ProductByCat'
 
 
 const routes = [
@@ -24,7 +25,7 @@ const routes = [
     },
     {
         path:"/category/:cid",
-        element:<Product/>
+        element:<ProductByCat/>
     },
     {
         path:"/cart",

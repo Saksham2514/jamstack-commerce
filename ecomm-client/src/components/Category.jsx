@@ -7,7 +7,7 @@ export const Category = () => {
     const {data,loading,error} = useQuery(getCategories)
     
     if (loading) return <h1>Loading...</h1>
-    if (data) console.log(data);
+    
     if (error) console.log(error);
 
   return (
